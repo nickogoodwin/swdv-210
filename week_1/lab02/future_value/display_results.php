@@ -22,7 +22,7 @@
         $error_message .= 'Interest rate must be a valid number.<br>'; 
     } else if ( $interest_rate <= 0 ) {
         $error_message .= 'Interest rate must be greater than zero.<br>'; 
-    } else if ( $interest_rate >= 15) {
+    } else if ( $interest_rate >= 15) { 
         $error_message .= 'Interest rate cannot be greather than 15.<br>';
     }
     
