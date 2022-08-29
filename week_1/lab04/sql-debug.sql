@@ -21,21 +21,29 @@ CREATE TABLE
         vendorCity VARCHAR(45) NOT NULL,
         vendorState VARCHAR(45) NOT NULL,
         vendorZipCode VARCHAR(10) NOT NULL,
-        vendorPhone VARCHAR(20) NOT NULL PRIMARY KEY (vendorID)
+        vendorPhone VARCHAR(20) NOT NULL,
+        PRIMARY KEY (vendorID)
     );
 
 --changed "CREATE TABLE IF EXISTS" to "CREATE TABLE IF NOT EXISTS"
 
+--PRIMARY KEY statement moved to new line, separated by comma
+
 CREATE TABLE
     IF NOT EXISTS invoices (
-        invoiceID INT NOT NULL AUTO INCREMENT,
+        invoiceID INT NOT NULL AUTO_INCREMENT,
         vendorID INT NOT NULL,
         invoiceNumber VARCHAR(45) NOT NULL,
         invoiceDate DATETIME NOT NULL,
         invoiceTotal DECIMAL NOT NULL,
         paymentTotal DECIMAL,
-        PRIMARY KEY (invoiceID)
+        PRIMARY KEY (invoiceID),
+        FOREIGN KEY (vendorID) REFERENCES vendors(vendorID)
     );
+
+--AUTO_INCREMENT was missing the dash "_"
+
+--Added FOREIGN KEY statement to reference the vendors table
 
 CREATE TABLE
     IF NOT EXISTS lineItems (
@@ -45,13 +53,30 @@ CREATE TABLE
         quantity INT NOT NULL,
         price INT NOT NULL,
         lineItemTotal DECIMAL NOT NULL,
-        PRIMARY_KEY (lineItemID)
+        PRIMARY KEY (lineItemID),
+        FOREIGN KEY (invoiceID) REFERENCES invoices(invoiceID)
     );
 
-CREATE INDEX vendorID ON invoices;
+--removed the dash "_" from PRIMARY_KEY
 
-CREATE INDEX invoiceNumber ON invoiceNumber;
+--Added FOREIGN KEY statement to reference the invoices table
 
-CREATE INDEX invoiceID ON invoiceID.lineItems;
+CREATE INDEX vendorID ON invoices(vendorID);
 
-GRANT SELECT TO mgs_user IDENTIFIED BY 'pa55word';
+--'vendorID' column was not selected in invoices table
+
+CREATE INDEX invoiceNumber ON invoices(invoiceNumber);
+
+--'invoices' table was not selected
+
+CREATE INDEX invoiceID ON lineItems(invoiceID);
+
+--changed invoiceID.lineItems to lineItems(invoiceID)
+
+GRANT SELECT ON ap.* TO mgs_user IDENTIFIED BY 'pa55word';
+
+--added 'ON ap.*' to grant SELECT access to the correct db
+
+SHOW GRANTS FOR mgs_user;
+
+--just making sure it worked :)
