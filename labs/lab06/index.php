@@ -1,5 +1,6 @@
 <?php include 'view/header.php'; ?>
 <main>
+    <?php phpinfo();?>
     <h1>Menu</h1>
     <ul>
         <li>
