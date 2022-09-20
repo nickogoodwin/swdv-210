@@ -1,3 +1,7 @@
+<!-- 
+    Nicko Goodwin
+    9/20/2022
+ -->
 <?php 
     //set default value of variables for initial page load
     if (!isset($investment)) { $investment = '10000'; } 

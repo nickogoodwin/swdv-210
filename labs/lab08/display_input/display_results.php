@@ -1,3 +1,7 @@
+<!-- 
+    Nicko Goodwin
+    9/20/2022
+ -->
 <?php
     // get the data from the form
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -15,7 +19,7 @@
 
     // for the wants_updates check box,
     // display a value of 'Yes' or 'No'
-    $wants_updates = isset($_POST['wants_updates']) == true ? "Yes" : 'No' ;
+    $wants_updates = isset($_POST['wants_updates'])  ? "Yes" : 'No' ;
 
     $contact_via = filter_input(INPUT_POST, 'contact_via');
 
