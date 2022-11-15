@@ -9,7 +9,7 @@ $fields->addField('password', 'Must be at least 8 characters.');
 $fields->addField('verify');
 $fields->addField('first_name');
 $fields->addField('last_name');
-$fields->addField('address', '',required:FALSE);
+$fields->addField('address', '', $required=FALSE);
 $fields->addField('city', '', required:FALSE);
 $fields->addField('state', 'Use 2 character abbreviation.', required:FALSE);
 $fields->addField('zip', 'Use 5 or 9 digit ZIP code.', required:FALSE);

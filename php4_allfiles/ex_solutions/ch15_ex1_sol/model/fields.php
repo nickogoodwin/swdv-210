@@ -3,11 +3,17 @@ class Field {
     private $hasError = FALSE;
     private $value;
 
-    public function __construct(
-            private $name, 
-            private $message = '',
-            private $required = TRUE,
-    ) { }
+    // public function __construct(
+    //         private $name, 
+    //         private $message = '',
+    //         private $required = TRUE,
+    // ) { }
+
+    public function __construct($name, $message = '', $required = TRUE) {
+        $this->name = $name;
+        $this->message = $message;
+        $this->required = $required;
+    }
     
     public function getName()    { return $this->name; }
     public function getMessage() { return $this->message; }
